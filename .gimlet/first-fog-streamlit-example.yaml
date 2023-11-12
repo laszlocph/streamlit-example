@@ -1,0 +1,17 @@
+app: streamlit-example
+env: first-fog
+namespace: default
+chart:
+  repository: https://chart.onechart.dev
+  name: onechart
+  version: 0.58.0
+values:
+  containerPort: 80
+  gitRepository: laszlocph/streamlit-example
+  gitSha: '{{ .SHA }}'
+  image:
+    repository: 127.0.0.1:32447/streamlit-example
+    tag: '{{ .SHA }}'
+  replicas: 1
+  resources:
+    ignoreLimits: true
