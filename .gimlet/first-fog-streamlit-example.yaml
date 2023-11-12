@@ -12,6 +12,15 @@ values:
   image:
     repository: 127.0.0.1:32447/streamlit-example
     tag: '{{ .SHA }}'
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/auth-realm: Authentication Required
+      nginx.ingress.kubernetes.io/auth-secret: basic-auth
+      nginx.ingress.kubernetes.io/auth-type: basic
+    host: streamlit-example.demo
+    path: /
+    tlsEnabled: false
   replicas: 1
   resources:
     ignoreLimits: true
